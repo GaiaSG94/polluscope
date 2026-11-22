@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PolluScope — Live air pollution map</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <h1>PolluScope</h1>
+          <p>Air quality, at a glance</p>
+        </div>
+      </div>
+      <div class="topbar-meta">
+        <span id="status" class="status">Loading stations…</span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="panel">
+        <section class="panel-section">
+          <h2>Filters</h2>
+          <label class="field">
+            <span>Pollutant</span>
+            <select id="pollutant">
+              <option value="aqi">Overall AQI</option>
+              <option value="pm25">PM2.5</option>
+              <option value="pm10">PM10</option>
+              <option value="no2">NO₂</option>
+              <option value="o3">O₃</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Search city</span>
+            <input id="search" type="search" placeholder="e.g. Lyon" autocomplete="off" />
+          </label>
+        </section>
+
+        <section class="panel-section grow">
+          <h2>Stations <span id="count" class="badge">0</span></h2>
+          <ul id="stations" class="stations"></ul>
+        </section>
+
+        <section class="panel-section">
+          <h2>AQI scale</h2>
+          <ul class="legend">
+            <li><i class="dot good"></i> Good · 0–50</li>
+            <li><i class="dot moderate"></i> Moderate · 51–100</li>
+            <li><i class="dot sensitive"></i> Sensitive · 101–150</li>
+            <li><i class="dot unhealthy"></i> Unhealthy · 151–200</li>
+            <li><i class="dot very-unhealthy"></i> Very unhealthy · 201–300</li>
+            <li><i class="dot hazardous"></i> Hazardous · 300+</li>
+          </ul>
+        </section>
+      </aside>
+
+      <div id="map" class="map" role="application" aria-label="Air pollution map"></div>
+    </main>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="app.js"></script>
+  </body>
+</html>
